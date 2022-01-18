@@ -2,10 +2,15 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// function for NOR operation
-bool NOR(bool x,bool y){
-    bool z=!(x||y);
+// function for NAND operation
+bool NAND1(bool x,bool y){
+    bool z=!(x&&y);
     return z;
+}
+bool NAND2(bool x,bool y,bool z){
+    bool z=!(x&&y&&z)
+        return z;
+
 }
 
 int main() {
@@ -25,7 +30,7 @@ int main() {
   I=i;
 
   //Implementation of SOP using NOR gate
-   X=(NOR(NOR(A,A),F),NOR(A,NOR(C,I)));
+   X=NAND2(NAND1(A,NAND1(F,F)),NAND1(NAND1(A,A),C),NAND1(NAND1(A,A),I))
    printf("OUTPUT:%d",X);
 
 
