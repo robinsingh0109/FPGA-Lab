@@ -7,7 +7,7 @@ bool NAND1(bool x,bool y){
     bool z=!(x&&y);
     return z;
 }
-bool NAND2(bool x,bool y,bool k){
+bool NAND2(bool x,bool y,bool z){
     bool k=!(x&&y&&z);
         return k;
 
