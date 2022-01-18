@@ -7,9 +7,9 @@ bool NAND1(bool x,bool y){
     bool z=!(x&&y);
     return z;
 }
-bool NAND2(bool x,bool y,bool z){
-    bool z=!(x&&y&&z)
-        return z;
+bool NAND2(bool x,bool y,bool k){
+    bool k=!(x&&y&&z);
+        return k;
 
 }
 
@@ -30,8 +30,12 @@ int main() {
   I=i;
 
   //Implementation of SOP using NOR gate
-   X=NAND2(NAND1(A,NAND1(F,F)),NAND1(NAND1(A,A),C),NAND1(NAND1(A,A),I))
-   printf("OUTPUT:%d",X);
+   X=NAND2(NAND1(A,NAND1(F,F)),NAND1(NAND1(A,A),C),NAND1(NAND1(A,A),I));
+   printf("OUTPUT:%d\n",X);
+   if(X==1)
+       printf("Eligible for Scholarship");
+   else
+       printf("Not eligible for Scholarship ");
 
 
 return 0;
