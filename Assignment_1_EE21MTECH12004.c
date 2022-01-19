@@ -2,11 +2,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// function for NAND operation
+// function for 2 input NAND operation
 bool NAND1(bool x,bool y){
     bool z=!(x&&y);
     return z;
 }
+// function for 3 input nand operation
 bool NAND2(bool x,bool y,bool z){
     bool k=!(x&&y&&z);
         return k;
@@ -29,7 +30,7 @@ int main() {
   scanf("%d",&i);
   I=i;
 
-  //Implementation of SOP using NOR gate
+  //Implementation of SOP using NAND gate
    X=NAND2(NAND1(A,NAND1(F,F)),NAND1(NAND1(A,A),C),NAND1(NAND1(A,A),I));
    printf("OUTPUT:%d\n",X);
    if(X==1)
