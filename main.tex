@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{karnaugh-map}
+\title{Assignment 1  | FPGA Lab}
+\author{Robin Singh}
+\date{January 2022}
+
+\begin{document}
+\maketitle
+
+\section{Question}
+
+A training institute intends to give scholarships to its students as per the criteria
+given below :\\
+• The student has excellent academic record but is financially weak.\\
+                        \begin{center}     OR \end{center}  \\
+• The student does not have an excellent academic record and belongs to
+a backward class.\\
+                             \begin{center}     OR \end{center}  \\
+• The student does not have an excellent academic record and is
+physically impaired.\\
+The inputs are:\\
+INPUTS\\
+A: Has excellent academic record\\
+F: Financially sound\\
+C: Belongs to a backward class\\
+I: Is physically impaired
+(In all the above cases 1 indicates yes and 0 indicates no).\\
+Output : X [1 indicates yes, 0 indicates no for all cases]\\
+Draw the truth table for the inputs and outputs given above and write the SOP
+expression for X(A,F,C,I).
+
+\section{Solution}
+
+\subsection{Truth Table}
+\begin{displaymath}
+\begin{array}{|c|c|c| c|c|}
+% |c c|c| means that there are three columns in the table and
+% a vertical bar ’|’ will be printed on the left and right borders,
+% and between the second and the third columns.
+% The letter ’c’ means the value will be centered within the column,
+% letter ’l’, left-aligned, and ’r’, right-aligned.
+\hline
+A & F & C &I &\textbf{X } \\ % Use & to separate the columns
+\hline % Put a horizontal line between the table header and the rest.
+0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 \\
+0 & 0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 & 1 \\
+0 & 1 & 1 & 0 & 1 \\
+0 & 1 & 1 & 1 & 1 \\
+1 & 0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 1 & 1 \\
+1 & 0 & 1 & 0 & 1 \\
+1 & 0 & 1 & 1 & 1 \\
+1 & 1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 \\
+1 & 1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 1 & 0 \\
+\hline
+
+
+\end{array}
+\end{displaymath}
+\subsection{Karnaugh Map for given truth table}
+\numberwithin{figure}{section}
+\begin{figure}[h]
+\centering
+\begin{karnaugh-map}[4][4][1][$CD$][$$AB$$]
+    \minterms{1,2,3,5,6,7,8,9,10,11}
+    \maxterms{0,4,12,13,14,15}
+    \implicant{8}{10}
+    \implicant{1}{7}
+    \implicant{3}{6}
+    
+    \draw[color=black, ultra thin] (0, 4) --
+    node [pos=0.7, above right, anchor=south west] {$CD$} % YOU CAN CHANGE NAME OF VAR HERE, THE $X$ IS USED FOR ITALICS
+    node [pos=0.7, below left, anchor=north east] {$AB$} % SAME FOR THIS
+    ++(135:1);
+    
+\end{karnaugh-map}
+\caption{Karnaugh-Map}
+\label{fig:kmap}
+\end{figure}
+
+\subsection{SOP EXPRESSION}
+       \begin{center}     X=A.F' +A'.C +A'.I \end{center}  \\
+      
+        To implement it using NAND Logic, we convert the simplified SOP expression to suite the NAND logic, which gives :
+
+\begin{center}
+ 
+   $F = \overline{\overline{A.\overline{F}} . \overline{\overline{A}.C} . \overline{\overline{A}.I}} .\\
+   \vspace{5pt}
+   
+\end{center}    
+\end{document}
